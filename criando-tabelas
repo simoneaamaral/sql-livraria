@@ -1,0 +1,38 @@
+CREATE TABLE autores
+(
+	id serial primary key,
+	nome varchar(150) not null,
+	nacionalidade varchar(50) not null
+);
+	
+CREATE TABLE editoras
+(
+	id serial primary key,
+	nome varchar(60) not null
+);
+
+CREATE TABLE categorias
+(
+	id serial primary key,
+	nome varchar(60) not null
+);
+
+CREATE TABLE livro
+(
+	isbn varchar(22) primary key,
+	titulo varchar(50) not null,
+	ano_publicacao integer not null,
+	fk_editora integer not null,
+	foreign key (fk_editora) references editoras(id),
+	fk_categoria integer not null,
+	foreign key (fk_categoria) references categorias(id)
+);
+
+CREATE TABLE livro_autor
+(
+	id serial primary key,
+	fk_livro varchar(22)not null,
+	foreign key (fk_livro) references livro(isbn),
+	fk_autor integer not null,
+	foreign key (fk_autor) references autores(id)
+);
