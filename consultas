@@ -1,0 +1,16 @@
+SELECT * FROM livro;
+
+--7
+SELECT * FROM livro ORDER BY titulo;
+
+--8
+SELECT * FROM livro, livro_autor, autores WHERE fk_autor = autores.id AND fk_livro = livro.isbn ORDER BY autores.nome;
+
+--9
+SELECT * FROM livro, categorias WHERE fk_categoria = categorias.id AND 
+	categorias.nome = 'Literatura Juvenil' ORDER BY ano_publicacao;
+
+--10
+SELECT * FROM livro, categorias WHERE fk_categoria = categorias.id AND
+	categorias.nome = 'Humor' AND ano_publicacao >=2000 AND ano_publicacao <=2010
+	OR fk_categoria = categorias.id AND categorias.nome = 'Ficção Científica' AND ano_publicacao >=2000 AND ano_publicacao <=2010; 
